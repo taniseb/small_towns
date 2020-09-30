@@ -17,7 +17,7 @@ class PersonalDataController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_datum
-      @emmend = Personal_datum.find(params[:id])
+      @emmend = PersonalDatum.find(params[:id])
     end
 
     # Only allow a trusted parameter "white-list" through.
