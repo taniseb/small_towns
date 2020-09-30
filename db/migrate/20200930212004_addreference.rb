@@ -1,5 +1,5 @@
 class Addreference < ActiveRecord::Migration[6.0]
   def change
-    add_reference :city_halls, :user, index: true
+    add_reference :users, :city_hall, index: true
   end
 end
