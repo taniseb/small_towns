@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :personal_data
+  resources :personal_data, only: [:index]
 
-  resources :requisitions
+  # resources :requisitions
 
-  resources :city_halls
+  # resources :city_halls
+
+  # 1) colocar validação dos campos dos models
+  # 2) começar pelo controle mais importante
 
 
 
