@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         has_many :requisitions
-        belongs_to :city_hall
+        # belongs_to :city_hall (essa linha precisa ser revista)
         has_many :personal_data
 end
