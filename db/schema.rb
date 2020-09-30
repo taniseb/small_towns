@@ -25,15 +25,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_214219) do
   end
 
   create_table "personal_data", force: :cascade do |t|
-    t.string "iptu"
-    t.string "scholar_attendancy"
-    t.string "health_information"
-    t.string "licence"
-    t.string "social_assistancy"
-    t.string "contract"
-    t.string "public_security"
-    t.string "traffic"
-    t.string "construction"
+    t.string "datum_font"
+    t.string "datum_information"
+    t.string "datum_access"
     t.bigint "user_id"
     t.bigint "city_hall_id"
     t.datetime "created_at", precision: 6, null: false
@@ -44,21 +38,14 @@ ActiveRecord::Schema.define(version: 2020_09_29_214219) do
 
   create_table "requisitions", force: :cascade do |t|
     t.string "status"
-    t.bigint "users_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_requisitions_on_users_id"
-  end
-
-  create_table "requition_fields", force: :cascade do |t|
     t.string "field_name"
     t.string "new_value"
     t.boolean "excluded"
     t.string "justification"
-    t.bigint "requisition_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["requisition_id"], name: "index_requition_fields_on_requisition_id"
+    t.index ["user_id"], name: "index_requisitions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_214219) do
     t.string "cpf"
     t.string "first_name"
     t.string "last_name"
+    t.boolean "datum_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
