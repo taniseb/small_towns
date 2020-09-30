@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :personal_data
 
+  resources :requisitions
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
