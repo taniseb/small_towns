@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   #, :path => 'accounts', :controllers => { registrations: 'registrations'}
 
-  resources :personal_data, only: [:index]
+  resources :personal_data, only: [:index, :show]
 
   get '/user' => "users#home", :as => :user_root
 

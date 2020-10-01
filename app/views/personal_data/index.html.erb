@@ -2,11 +2,11 @@
 
 <div class="container my-5">
 
-  <div class="cards">
+  <div class="personal-data-cards">
 
     <% @personal_data.each do |personal_datum| %>
 
-      <div class="card-category">
+      <div class="personal-data-card">
 
         <div class="my-3" >
           <h2><%= "Nome: #{personal_datum.user.first_name}" %></h2>
