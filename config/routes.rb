@@ -2,10 +2,17 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+
   devise_for :users
 
-  resources :personal_data
-  resources :users
+
+
+  #, :path => 'accounts', :controllers => { registrations: 'registrations'}
+
+  resources :personal_data, only: [:index]
+
+  get '/user' => "users#home", :as => :user_root
+
 
   resources :requisitions
 
