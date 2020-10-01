@@ -1,1 +1,63 @@
-show.html.erb
+<div class="container">
+
+  <div class="row">
+
+    <div class="card-trip new">
+
+      <div class="col-md-12 p-5">
+
+        <div class="font-weight-bold display-4 text-center">
+        DADOS PESSOAIS
+        </div>
+
+        <div class="font-weight display-6 text-center text-secondary">
+        Dados localizados no banco de dados do Município
+        </div>
+
+        <div class="card-trip-infos">
+
+          <center><p id="notice"><%= notice %></p></center>
+
+          <p>
+            <h6><strong>Nome:</strong></h6>
+            <mark><%#= @emmend.name %></mark>
+          </p>
+
+          <p>
+            <h6><strong>Descrição:</strong></h6>
+            <mark><%#= @emmend.description %></mark>
+          </p>
+
+          <p>
+            <h6><strong>Tema:</strong></h6>
+            <mark><%#= @emmend.thema %></mark>
+          </p>
+
+          <p>
+            <h6><strong>Projeto:</strong></h6>
+            <mark><%#= @emmend.project %></mark>
+          </p>
+
+          <br>
+
+          <p>
+            <center>
+              <strong>
+
+                <i class="fas fa-thumbs-up like"></i>
+                <%#= pluralize @emmend.supporters.count, "Like" %>
+
+
+              </strong>
+            </center>
+          </p>
+
+          <br>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

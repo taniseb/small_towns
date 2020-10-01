@@ -3,16 +3,13 @@ class PersonalDataController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-     @personal_data = PersonalDatum.all
+    @current_user = current_user
+    @personal_data = PersonalDatum.all
   end
 
-
-
-
-
-
-
-
+  def show
+    @current_user = current_user
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
