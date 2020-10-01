@@ -1,19 +1,4 @@
-<!-- <h1>personal_data#view_index_page</h1>
-
-<h2>Oi, Tanise ! Oi, Victor ! Eu sou a view do personal_data index: index personal_data#view_index_page !!!</h2>
-
-<p>Find me in app/views/personal_data/index.html.erb</p>
-
-<h1><%= @personal_data.first.datum_font %></h1>
-
-<h1><%= @personal_data.first.datum_information %></h1>
-
-<h1><%= @personal_data.first.datum_access %></h1> -->
-
-
 <p id="notice"><%= notice %></p>
-
-
 
 <div class="container my-5">
 
@@ -23,22 +8,32 @@
 
       <div class="card-category">
 
-
         <div class="my-3" >
-          <h2><%= personal_datum.user.first_name %></h2>
-        </div>
-
-
-        <div class="my-3" >
-          <h2><%= personal_datum.datum_font %></h2>
-        </div>
-
-        <div class="my-3">
-          <h3><%= link_to personal_datum.datum_information , personal_datum, class: "btn-show" %></h3>
+          <h2><%= "Nome: #{personal_datum.user.first_name}" %></h2>
         </div>
 
         <div class="my-3" >
-          <h2><%= personal_datum.datum_access %></h2>
+          <h2><%= "Sobrenome #{personal_datum.user.last_name}" %></h2>
+        </div>
+
+        <div class="my-3" >
+          <h2><%= "CPF: #{personal_datum.user.cpf}" %></h2>
+        </div>
+
+        <div class="my-3" >
+          <h2><%= "Email: #{personal_datum.user.email}" %></h2>
+        </div>
+
+        <div class="my-3" >
+          <h2><%= "Onde estão os seus dados pessoais: #{personal_datum.datum_font}" %></h2>
+        </div>
+
+        <div class="my-3" >
+          <h2><%= "Dados solicitados: #{personal_datum.datum_information}" %></h2>
+        </div>
+
+        <div class="my-3" >
+          <h2><%= "Quem tem acesso a esses dados: #{personal_datum.datum_access}" %></h2>
         </div>
 
       </div>

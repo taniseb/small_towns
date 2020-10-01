@@ -36,6 +36,8 @@ u12.first_name = "Dino"
 
 u12.last_name = "Sauro"
 
+u12.cpf = "888.555.666-07"
+
 u12.password = "123456"
 
 u12.password_confirmation = "123456"
@@ -53,7 +55,7 @@ pd12.datum_font = "Secretaria de Obras e Infraestrutura"
 
 pd12.datum_information = "Construção de um prédio de 12 andares"
 
-pd12.datum_access = "Acesso concedido somente ao proprietário"
+pd12.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
 
 pd12.city_hall = c12
 
@@ -99,6 +101,8 @@ u13.first_name = "Tiranossauro"
 
 u13.last_name = "Rex"
 
+u13.cpf = "697.412.632-03"
+
 u13.password = "123456"
 
 u13.password_confirmation = "123456"
@@ -115,7 +119,7 @@ pd13.datum_font = "Secretaria de Educação"
 
 pd13.datum_information = "Novo curso de Doutorado"
 
-pd13.datum_access = "Doutorado em matemática"
+pd13.datum_access = "Reitor da Universidade Federal de Santa Rails"
 
 pd13.city_hall = c13
 
@@ -161,6 +165,8 @@ u14.first_name = "Passaro"
 
 u14.last_name = "Aguia"
 
+u14.cpf = "498.527.632-05"
+
 u14.password = "123456"
 
 u14.password_confirmation = "123456"
@@ -175,9 +181,9 @@ pd14 = PersonalDatum.new
 
 pd14.datum_font = "Secretaria de Cultura e Esportes"
 
-pd14.datum_information = "Novo ginásio de esportes"
+pd14.datum_information = "Bolsa de esportes para prática de natação"
 
-pd14.datum_access = "Volei"
+pd14.datum_access = "Acesso livre a todos os cidadãos"
 
 pd14.city_hall = c14
 
