@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :personal_data, only: [:index]
-  resources :users, only: [:show]
+  resources :personal_data
+  resources :users
 
   resources :requisitions
 

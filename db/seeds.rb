@@ -15,28 +15,6 @@ PersonalDatum.delete_all
 #   end
 # end
 
-puts "Creating the first Requisition"
-
-rq12 = Requisition.new
-
-rq12.status = "pendente"
-
-rq12.field_name = "Regularização imobiliária pendente para os meus imóveis"
-
-rq12.new_value = "Os imóveis em que sou proprietário estão com a Regularização Imobiliária em dia: impostos pagos e de acordo com a legislação do município"
-
-rq12.justification = "Todos meus imóveis estão com os impostos quitados e com a documentação em conformidade com a lei municipal"
-
-rq12.excluded = false
-
-
-
-
-
-
-
-
-
 puts "Creating the first CityHall"
 
 c12 = CityHall.new
@@ -46,6 +24,7 @@ c12.name = "Goiania"
 c12.ibge_code = "123456789"
 
 c12.save!
+
 
 puts "Creating the first User"
 
@@ -65,6 +44,7 @@ u12.city_hall = c12
 
 u12.save!
 
+
 puts "Creating the first PersonalDatum"
 
 pd12 = PersonalDatum.new
@@ -81,6 +61,22 @@ pd12.user = u12
 
 pd12.save!
 
+
+puts "Creating the first Requisition"
+
+rq12 = Requisition.new
+
+rq12.status = "pendente"
+
+rq12.field_name = "Regularização imobiliária pendente para os meus imóveis"
+
+rq12.new_value = "Os imóveis em que sou proprietário estão com a Regularização Imobiliária em dia: impostos pagos e de acordo com a legislação do município"
+
+rq12.justification = "Todos meus imóveis estão com os impostos quitados e com a documentação em conformidade com a lei municipal"
+
+rq12.excluded = false
+
+rq12.user = u12
 
 
 puts "Creating the second CityHall"
@@ -128,6 +124,23 @@ pd13.user = u13
 pd13.save!
 
 
+puts "Creating the second Requisition"
+
+rq13 = Requisition.new
+
+rq13.status = "pendente"
+
+rq13.field_name = "Regularização imobiliária pendente para os meus imóveis"
+
+rq13.new_value = "Os imóveis em que sou proprietário estão com a Regularização Imobiliária em dia: impostos pagos e de acordo com a legislação do município"
+
+rq13.justification = "Todos meus imóveis estão com os impostos quitados e com a documentação em conformidade com a lei municipal"
+
+rq13.excluded = false
+
+rq13.user = u13
+
+
 puts "Creating the third CityHall"
 
 c14 = CityHall.new
@@ -171,6 +184,23 @@ pd14.city_hall = c14
 pd14.user = u14
 
 pd14.save!
+
+
+puts "Creating the third Requisition"
+
+rq14 = Requisition.new
+
+rq14.status = "pendente"
+
+rq14.field_name = "Regularização imobiliária pendente para os meus imóveis"
+
+rq14.new_value = "Os imóveis em que sou proprietário estão com a Regularização Imobiliária em dia: impostos pagos e de acordo com a legislação do município"
+
+rq14.justification = "Todos meus imóveis estão com os impostos quitados e com a documentação em conformidade com a lei municipal"
+
+rq14.excluded = false
+
+rq14.user = u14
 
 
 
