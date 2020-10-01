@@ -49,15 +49,15 @@ ActiveRecord::Schema.define(version: 2020_09_30_212004) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "cpf", default: "", null: false
+    t.boolean "datum_admin", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "cpf"
-    t.string "first_name"
-    t.string "last_name"
-    t.boolean "datum_admin", default: false
     t.bigint "city_hall_id"
     t.index ["city_hall_id"], name: "index_users_on_city_hall_id"
     t.index ["email"], name: "index_users_on_email", unique: true
