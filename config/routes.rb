@@ -5,15 +5,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
+
   #, :path => 'accounts', :controllers => { registrations: 'registrations'}
 
   resources :personal_data, only: [:index]
 
   get '/user' => "users#home", :as => :user_root
 
-  # resources :requisitions
 
-  # resources :city_halls
+  resources :requisitions
+
+  resources :city_halls
 
   # 1) colocar validação dos campos dos models
   # 2) começar pelo controle mais importante
