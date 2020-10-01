@@ -9,14 +9,6 @@ class RequisitionsController < ApplicationController
 
     @requisitions = Requisition.all
 
-    # if params[:query].present?
-    #   @requisitions = requisition.search_by_name_and_description_and_project_and_thema(params[:query])
-    # else
-    #   @requisitions = Requisition.all
-    # end
-
-    #   @requisitions = @requisitions.order("updated_at DESC")
-
   end
 
   # GET /requisitions/1
@@ -27,11 +19,12 @@ class RequisitionsController < ApplicationController
   #   @user_is_supporter = @requisition.supports.any? do |support|
   #     support.supporter == current_user
   #   end
-  # end
+  end
 
   # GET /requisitions/new
   def new
-    # @requisition = Requisition.new
+    @requisition = Requisition.new
+    @user = User.find(params[:user_id])
   end
 
   # GET /requisitions/1/edit
@@ -40,14 +33,14 @@ class RequisitionsController < ApplicationController
 
   # POST /requisitions
   def create
-    # @requisition = Requisition.new(requisition_params)
-    # @requisition.user = current_user
+    @requisition = Requisition.new(requisition_params)
+    @requisition.user = User.find(params[:user_id])
 
-    # if @requisition.save
-    #   redirect_to @requisition, notice: 'requisition was successfully created.'
-    # else
-    #   render :new
-    # end
+    if @requisition.save
+      redirect_to user_root_path, notice: 'requisition was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /requisitions/1
@@ -89,9 +82,7 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
-      params.require(:requisition).permit(:status)
+      params.require(:requisition).permit(:status, :field_name, :new_value,:justification)
     end
-
-  end
 
 end

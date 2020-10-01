@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :personal_data, only: [:index]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :requisitions, only: [:index,:new,:create]
+  end
 
+  get '/user' => "users#home", :as => :user_root
   # resources :requisitions
 
   # resources :city_halls
