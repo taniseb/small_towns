@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-    def show
-    end
-    
+  def show
+  end
+
+  def home
+  end
 end
