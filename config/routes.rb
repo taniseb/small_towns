@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   resources :personal_data, only: [:index]
 
-  # resources :requisitions
+  resources :requisitions
 
-  # resources :city_halls
+  resources :city_halls
 
   # 1) colocar validação dos campos dos models
   # 2) começar pelo controle mais importante
