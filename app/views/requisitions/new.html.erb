@@ -6,9 +6,41 @@
 
             <div class="col-md-12 p-5">
 
-                <%= render 'form', requisition: @requisition %>
 
-                <%= link_to 'Voltar', requisitions_path %>
+              <%= simple_form_for([@user, @requisition]) do |f| %>
+
+                    <div class="font-weight-bold display-4 text-center">
+                    Faça sua solicitação no formulário abaixo!
+                    </div>
+
+                    <div class="form-inputs d-flex">
+
+                      <div class="w-50 p-2">
+                        <%= f.input :field_name, label: 'Conteúdo a ser Solicitado', collection: PersonalDatum.all.pluck(:datum_font).uniq %>
+                      </div>
+
+                      <div class="w-100 p-2">
+
+                        <%= f.input :justification, label: 'Justificativa da Solicitação' %>
+                        <%if current_user.requisitions.status.any?("aprovada")%>
+                          <div class="w-50 p-2">
+                            <%= f.input :new_value, label: 'Novo Valor a Ser Utilizado', collection: PersonalDatum.all.pluck(:datum_font).uniq %>
+                          </div>
+                        <% end %>
+                        <div class="form-actions">
+                        <br>
+
+                          <center><%= f.button :submit, 'Submeter', class: 'btn btn-primary' %></center>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  <% end %>
+
+                <%= link_to 'Voltar', user_root_path %>
+
 
             </div>
 
