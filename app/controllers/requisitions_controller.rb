@@ -24,7 +24,9 @@ class RequisitionsController < ApplicationController
   # GET /requisitions/new
   def new
     @requisition = Requisition.new
+
     @user = User.find(params[:user_id])
+
   end
 
   # GET /requisitions/1/edit
@@ -34,10 +36,12 @@ class RequisitionsController < ApplicationController
   # POST /requisitions
   def create
     @requisition = Requisition.new(requisition_params)
+
     @requisition.user = User.find(params[:user_id])
 
     if @requisition.save
       redirect_to user_root_path, notice: 'requisition was successfully created.'
+      
     else
       render :new
     end
@@ -82,7 +86,9 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
+
       params.require(:requisition).permit(:status, :field_name, :new_value,:justification)
+
     end
 
 end

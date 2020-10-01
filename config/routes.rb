@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+
   devise_for :users
+
 
   resources :personal_data, only: [:index]
   resources :users, only: [:show] do
@@ -12,7 +14,17 @@ Rails.application.routes.draw do
   get '/user' => "users#home", :as => :user_root
   # resources :requisitions
 
-  # resources :city_halls
+
+  #, :path => 'accounts', :controllers => { registrations: 'registrations'}
+
+  resources :personal_data, only: [:index, :show]
+
+  get '/user' => "users#home", :as => :user_root
+
+
+  resources :requisitions
+
+  resources :city_halls
 
   # 1) colocar validação dos campos dos models
   # 2) começar pelo controle mais importante
