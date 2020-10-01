@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :requisitions
   has_many :personal_data
-  belongs_to :city_hall
+  belongs_to :city_hall, optional:true
 
 end
