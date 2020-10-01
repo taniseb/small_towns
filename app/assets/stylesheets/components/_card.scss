@@ -1,11 +1,18 @@
-.card-category {
+
+.personal-data-cards {
+
+}
+
+
+.personal-data-card {
   background-size: cover;
   background-position: center;
   background-color: yellow;
-  height: 720px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 400px;
+  width: 80%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   color: red;
   font-size: 24px;
   font-weight: bold;
@@ -15,11 +22,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-}
+// .cards {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 16px;
+// }
+
+
 
 
 
