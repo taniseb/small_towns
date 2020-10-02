@@ -55,6 +55,39 @@ pd12.user = u12
 pd12.save!
 
 
+
+pd37 = PersonalDatum.new
+
+pd37.datum_font = "Secretaria de Saúde"
+
+pd37.datum_information = "Construção de um prédio de 12 andares"
+
+pd37.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
+
+pd37.city_hall = c12
+
+pd37.user = u12
+
+pd37.save!
+
+
+pd58 = PersonalDatum.new
+
+pd58.datum_font = "Secretaria de Saúde"
+
+pd58.datum_information = "Construção de um prédio de 12 andares"
+
+pd58.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
+
+pd58.city_hall = c12
+
+pd58.user = u12
+
+pd58.save!
+
+
+
+
 puts "Creating the first Requisition"
 
 rq12 = Requisition.new
