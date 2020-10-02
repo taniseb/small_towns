@@ -87,7 +87,7 @@ class RequisitionsController < ApplicationController
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
 
-      params.require(:requisition).permit(:status, :field_name, :new_value,:justification)
+      params.require(:requisition).permit(:status, :field_name, :new_value, :justification)
 
     end
 

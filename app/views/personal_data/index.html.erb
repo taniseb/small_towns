@@ -4,40 +4,57 @@
 
   <div class="personal-data-cards">
 
-    <% @personal_data.each do |personal_datum| %>
+    <%# @personal_data.each do |personal_datum| %>
 
       <div class="personal-data-card">
 
         <div class="my-3" >
-          <h2><%= "Nome: #{personal_datum.user.first_name}" %></h2>
+          <h2><%= "ID: #{@user.id}" %></h2>
         </div>
 
         <div class="my-3" >
-          <h2><%= "Sobrenome: #{personal_datum.user.last_name}" %></h2>
+          <h2><%= "Nome: #{@user.first_name}" %></h2>
         </div>
 
         <div class="my-3" >
-          <h2><%= "CPF: #{personal_datum.user.cpf}" %></h2>
+          <h2><%= "Sobrenome: #{@user.last_name}" %></h2>
         </div>
 
         <div class="my-3" >
-          <h2><%= "Email: #{personal_datum.user.email}" %></h2>
+          <h2><%= "CPF: #{@user.cpf}" %></h2>
         </div>
 
         <div class="my-3" >
-          <h2><%= "Onde está o dado: #{personal_datum.datum_font}" %></h2>
-        </div>
-
-        <div class="my-3" >
-          <h2><%= "Dados solicitados: #{personal_datum.datum_information}" %></h2>
-        </div>
-
-        <div class="my-3" >
-          <h2><%= "Quem tem acesso ao dado: #{personal_datum.datum_access}" %></h2>
+          <h2><%= "Email: #{@user.email}" %></h2>
         </div>
 
       </div>
-    <% end %>
+
+      <!-- início da iteração aqui -->
+
+
+      <% @personal_data.each do |personal_datum| %>
+
+        <div class="personal-data-card">
+
+          <div class="my-3" >
+            <h2><%= "Onde está o dado: #{personal_datum.datum_font}" %></h2>
+          </div>
+
+          <div class="my-3" >
+            <h2><%= "Dados solicitados: #{personal_datum.datum_information}" %></h2>
+          </div>
+
+          <div class="my-3" >
+            <h2><%= "Quem tem acesso ao dado: #{personal_datum.datum_access}" %></h2>
+          </div>
+
+        </div>
+
+      <% end %>
+
+
+      <!-- fim da iteração aqui -->
 
   </div>
 
