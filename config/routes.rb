@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   #, :path => 'accounts', :controllers => { registrations: 'registrations'}
 
 
-
   resources :requisitions
 
   resources :city_halls
