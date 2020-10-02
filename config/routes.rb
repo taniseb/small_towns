@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  resources :personal_data, only: [:index]
+  resources :personal_data, only: [:index, :show]
   resources :users, only: [:show] do
     resources :requisitions, only: [:index,:new,:create]
   end
@@ -17,9 +17,6 @@ Rails.application.routes.draw do
 
   #, :path => 'accounts', :controllers => { registrations: 'registrations'}
 
-  resources :personal_data, only: [:index, :show]
-
-  get '/user' => "users#home", :as => :user_root
 
 
   resources :requisitions

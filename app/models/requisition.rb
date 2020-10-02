@@ -1,5 +1,5 @@
 class Requisition < ApplicationRecord
-  before_save :default_value
+  before_create :default_value
   belongs_to :user
 
   def default_value

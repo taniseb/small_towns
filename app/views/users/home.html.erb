@@ -1,5 +1,5 @@
 <div class="container">
-    
+
     <div class="row">
 
         <div class="col-md-4 p-4">
@@ -9,17 +9,17 @@
                 <path fill-rule="evenodd" d="M11.5 8h-7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zm-7-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7zm0-3a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
                 </svg></right>
                 </div>
-                
+
                 <div class="card-body text-secondary">
                     <h5 class="card-title">Hugo</h5>
                     <p class="card-text">Dados do Hugo</p>
-                    <button type="button" class="btn btn-outline-primary">Peça acesso a seus dados</button>
-
-                    <! --new_user_requisition_path(current_user) - Colocar caminho no botão -->
-                    
+                    <%# if user.datum_admin==true  %>
+                      <%# @requisitions_pendente %>
+                    <% #end %>
+                    <%= link_to 'Peça acesso a seus dados', new_user_requisition_path(current_user), class: "btn btn-outline-primary" %>
                 </div>
-            </div>   
-        </div>                  
+            </div>
+        </div>
 
 
         <div class="col-md-8 pt-4">
@@ -27,6 +27,6 @@
         <center><h5>Você ainda não pediu permissão</h5></center>
         </div>
 
-    </div>    
+    </div>
 </div>
 

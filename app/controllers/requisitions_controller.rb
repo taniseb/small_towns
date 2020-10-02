@@ -6,10 +6,10 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions
   def index
-
     @requisitions = Requisition.all
-
+    @requisitions_pendente = Requisition.where(status:"pendente")
   end
+
 
   # GET /requisitions/1
   def show
@@ -41,7 +41,7 @@ class RequisitionsController < ApplicationController
 
     if @requisition.save
       redirect_to user_root_path, notice: 'requisition was successfully created.'
-      
+
     else
       render :new
     end

@@ -22,14 +22,13 @@
                       <div class="w-100 p-2">
 
                         <%= f.input :justification, label: 'Justificativa da Solicitação' %>
-                        <%if current_user.requisitions.status.any?("aprovada")%>
+                        <div class="form-actions">
+                        <br>
+                          <%unless current_user.requisitions.select{|requisition| requisition.status == "aprovada"}.empty? %>
                           <div class="w-50 p-2">
                             <%= f.input :new_value, label: 'Novo Valor a Ser Utilizado', collection: PersonalDatum.all.pluck(:datum_font).uniq %>
                           </div>
                         <% end %>
-                        <div class="form-actions">
-                        <br>
-
                           <center><%= f.button :submit, 'Submeter', class: 'btn btn-primary' %></center>
                         </div>
 
