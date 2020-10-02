@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] do
-    resources :requisitions, only: [:index,:new,:create]
-    resources :personal_data, only: [:index, :show]
+    resources :requisitions, only: [:index,:new,:create] do
+      resources :personal_data, only: [:index, :show]
+    end
   end
 
 
