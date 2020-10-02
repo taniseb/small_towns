@@ -13,10 +13,8 @@
                 <div class="card-body text-secondary">
                     <h5 class="card-title">Hugo</h5>
                     <p class="card-text">Dados do Hugo</p>
-                    <button type="button" class="btn btn-outline-primary">Peça acesso a seus dados</button>
-
+                    <%= link_to 'Peça acesso a seus dados', new_user_requisition_path(current_user), class: "btn btn-outline-primary" %>
                     <! --new_user_requisition_path(current_user) - Colocar caminho no botão -->
-                    
                 </div>
             </div>   
         </div>                  
