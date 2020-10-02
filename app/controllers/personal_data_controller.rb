@@ -7,11 +7,7 @@ class PersonalDataController < ApplicationController
 
 
   def index
-    # @current_user = current_user
-
-    # personal_datum.user.id
-
-    # @personal_data = PersonalDatum.all
+    @user = User.find(params[:user_id])
 
   end
 
@@ -22,7 +18,8 @@ class PersonalDataController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_datum
-      @personal_data = PersonalDatum.find(params[:user_id])
+      # raise
+      @personal_data = PersonalDatum.where(user_id: params[:user_id])
     end
 
     # Only allow a trusted parameter "white-list" through.
