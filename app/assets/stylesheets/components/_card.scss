@@ -28,7 +28,7 @@
 //   grid-gap: 16px;
 // }
 
-#teste{
+/* //#teste{
   background-size: cover;
   background-position: center;
   background-color: #F4F4F4;
@@ -45,8 +45,8 @@
   //box-shadow: 0 0 5px rgba(0,0,0,0.9);
   padding: 20px;
 
-} 
-
+}  */
+/* 
 .teste{
   background-size: cover;
   background-position: center;
@@ -65,7 +65,19 @@
   padding: 30px;
   margin-left: 30px;
 
-} 
+}  */
+
+.container-fluid {
+  width: 400px;
+}
+
+.card-fluid1 {
+  width: 70%;
+}
+
+.card-fluid2 {
+  width: 30%;
+}
 
 
 
