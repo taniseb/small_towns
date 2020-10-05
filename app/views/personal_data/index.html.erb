@@ -21,51 +21,45 @@
         </div>  
     </div>
   </div> 
-  
-  <div class="container mr-4">
 
-      <div class="md-form active-cyan-2 mt-4">
-      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </div>
-
-
-      <br>
-
-  </div>
 
   <div class="container">
 
+  <div class="md-form active-cyan-2 mt-4">
+  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+  </div>
 
-      <left><h4>Dados Disponíveis:</h4></left>
+  <br>
+
+    <left><h4>Dados Disponíveis:</h4></left>
 
       <% @personal_data.each do |personal_datum| %>
 
         <br>
 
+          <div class="d-flex">
 
-        <div class="d-flex">
+            <div class="card-fluid1">
 
-        <div class="card-fluid1">
+                  <div class="card secondary text-secondary bg-light">
+                  
+                    <div class="card-header" >
+                      <h5><%= "#{personal_datum.datum_font}" %></h5>
+                    </div>
 
-              <div class="card secondary text-secondary bg-light">
-              
-                <div class="card-header" >
-                  <h5><%= "#{personal_datum.datum_font}" %></h5>
-                </div>
+                    <div class="ml-3 mt-3 mr-2" >
+                      <p><%= "Informações disponíveis: #{personal_datum.datum_information}" %><p>
+                    </div>
 
-                <div class="ml-3 mt-3 mr-2" >
-                  <p><%= "Informações disponíveis: #{personal_datum.datum_information}" %><p>
-                </div>
+                    <div class="ml-3 mr-2" >
+                      <p><%= "Quem tem acesso ao dado: #{personal_datum.datum_access}" %><p>
+                    </div>
 
-                <div class="ml-3 mr-2" >
-                  <p><%= "Quem tem acesso ao dado: #{personal_datum.datum_access}" %><p>
-                </div>
+                    <br>
 
-                <br>
+                  </div>
 
-              </div>
-
-        </div>      
+            </div>      
 
             <div class="card-fluid2 mr-1 mt-4">
               <div class="card border-white text-secondary bg-white ml-4">
@@ -92,14 +86,12 @@
               </div>
             </div>  
 
-        </div>    
+          </div>     
 
       <% end %>
 
-      <br>
-
-
-        
+    <br>
+ 
     <% render "users/index" %>
 
   </div>
