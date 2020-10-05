@@ -7,7 +7,10 @@ class RequisitionsController < ApplicationController
   # GET /requisitions
   def index
     @requisitions = Requisition.all
-    @requisitions_pendente = Requisition.where(status:"pendente")
+
+    @requisitions_pendente = Requisition.where(status: "pendente")
+
+    @requisitions = @requisitions.order("updated_at DESC")
   end
 
 
