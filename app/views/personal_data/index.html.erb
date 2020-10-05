@@ -28,13 +28,20 @@
       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
       </div>
 
+
       <br>
+
+  </div>
+
+  <div class="container">
+
 
       <left><h4>Dados Disponíveis:</h4></left>
 
       <% @personal_data.each do |personal_datum| %>
 
         <br>
+
 
         <div class="d-flex">
 
@@ -91,9 +98,13 @@
 
       <br>
 
+
+        
+    <% render "users/index" %>
+
   </div>
 
-</div>  
+</div>
 
 
 
