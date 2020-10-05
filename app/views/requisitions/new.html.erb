@@ -1,21 +1,16 @@
-<div class="container">
-
-    <div class="row">
-
-        <div class="card-trip new">
-
-            <div class="col-md-12 p-5">
-
+<div class="container w-50 mt-4 p-5 text">
 
               <%= simple_form_for([@user, @requisition]) do |f| %>
 
-                    <div class="font-weight-bold display-4 text-center">
-                    Faça sua solicitação no formulário abaixo!
+                    <div class="text-center text">
+                    <h1>Faça sua solicitação no formulário</h1>
                     </div>
 
-                    <div class="form-inputs d-flex">
+                    <br>
 
-                      <div class="w-50 p-2">
+                    <div class="form-inputs">
+
+                      <div class="w-100 p-2">
                         <%= f.input :field_name, label: 'Conteúdo a ser Solicitado', collection: PersonalDatum.all.pluck(:datum_font).uniq %>
                       </div>
 
@@ -39,14 +34,6 @@
 
                   <% end %>
 
-                <%= link_to 'Voltar', user_root_path %>
-
-
-            </div>
-
-
-        </div>
-
-    </div>
+                <center><%= link_to 'Voltar', user_root_path %></center>
 
 </div>

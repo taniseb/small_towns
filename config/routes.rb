@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       patch '/change_status', to: "requisitions#change_status", as: :change_status
     end
     resources :personal_data, only: [:index, :show]
+
   end
 
 
@@ -17,9 +18,9 @@ Rails.application.routes.draw do
 
 
 
-  resources :requisitions
+  #resources :requisitions
 
-  resources :city_halls
+  #resources :city_halls
 
 
 end
