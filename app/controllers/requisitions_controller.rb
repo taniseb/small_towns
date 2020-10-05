@@ -36,7 +36,7 @@ class RequisitionsController < ApplicationController
     @requisition = Requisition.new(requisition_params)
     @requisition.user = User.find(params[:user_id])
     if @requisition.save
-      redirect_to user_personal_data_path(current_user), notice: 'requisition was successfully created.'
+      redirect_to user_personal_data_path(current_user), alert: 'requisition was successfully created.'
     else
       render :new
     end

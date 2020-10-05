@@ -22,11 +22,11 @@ puts "Creating the first User"
 
 u12 = User.new
 
-u12.email = "dinossauro@gmail.com"
+u12.email = "hugoee@gmail.com"
 
-u12.first_name = "Dino"
+u12.first_name = "Hugo"
 
-u12.last_name = "Sauro"
+u12.last_name = "Santos"
 
 u12.cpf = "888.555.666-07"
 
@@ -43,11 +43,11 @@ puts "Creating the first PersonalDatum"
 
 pd12 = PersonalDatum.new
 
-pd12.datum_font = "Secretaria de Obras e Infraestrutura"
+pd12.datum_font = "IPTU"
 
-pd12.datum_information = "Construção de um prédio de 12 andares"
+pd12.datum_information = "Proprietário de 25 imóveis urbanos neste município, referência outubro de 2020"
 
-pd12.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
+pd12.datum_access = "Gestora da Secretaria Municipal de Obras"
 
 pd12.city_hall = c12
 
@@ -59,11 +59,11 @@ pd12.save!
 
 pd37 = PersonalDatum.new
 
-pd37.datum_font = "Secretaria de Saúde"
+pd37.datum_font = "ITBI"
 
-pd37.datum_information = "Construção de um prédio de 12 andares"
+pd37.datum_information = "Realizou transferência da propriedade de 5 casas e 11 prédios, em setembro de 2020"
 
-pd37.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
+pd37.datum_access = "Gestora da Secretaria de Patrimônio do Município"
 
 pd37.city_hall = c12
 
@@ -74,11 +74,11 @@ pd37.save!
 
 pd58 = PersonalDatum.new
 
-pd58.datum_font = "Secretaria de Saúde"
+pd58.datum_font = "ISS"
 
-pd58.datum_information = "Construção de um prédio de 12 andares"
+pd58.datum_information = "Contribuiu com o pagamento de R$ 3.500.000,00 (três Milhões e Quinhentos Mil Reais), para o tributo municipal ISS"
 
-pd58.datum_access = "Secretário Municipal e o Gestor do Departamento de Obras do Município"
+pd58.datum_access = "Gestora da Secretaria de Fazenda do Município"
 
 pd58.city_hall = c12
 
