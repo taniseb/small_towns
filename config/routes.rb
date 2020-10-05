@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
 
 
-  resources :requisitions
+  #resources :requisitions
 
-  resources :city_halls
+  #resources :city_halls
 
 
 end
