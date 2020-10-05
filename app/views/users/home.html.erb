@@ -9,11 +9,9 @@
                 <div class="card-body text-secondary">
                     <h5 class="card-title">Hugo</h5>
                     <p class="card-text">Dados do Hugo</p>
-
                     <%# if user.datum_admin==true  %>
                     <%# #end %>
                     <%= link_to 'Peça acesso a seus dados pessoais', new_user_requisition_path(current_user), class: "btn btn-outline-primary" %>
-
                 </div>
             </div>
         </div>
@@ -21,6 +19,12 @@
 
         <div class="col-md-8 pt-4">
         <%= image_tag "home.png", class: "img-fluid" %>
+          <% if current_user.datum_admin==true  %>
+            <% @requisitions_pendente.each do |r| %>
+              <%= r %>
+              <%=link_to 'aprovada', user_requisition_change_status_path(current_user, r.id),method: 'patch', locals: {:teste => "aprovada"}   %>
+            <% end %>
+          <% end %>
         <center><h5>Você ainda não pediu permissão</h5></center>
         </div>
 
