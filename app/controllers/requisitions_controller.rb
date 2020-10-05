@@ -6,6 +6,7 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions
   def index
+
     @requisitions = Requisition.where(user_id: params[:user_id])
     @user = User.find(params[:user_id])
 
@@ -14,6 +15,7 @@ class RequisitionsController < ApplicationController
     # @requisitions_pendente = Requisition.where(status: "pendente")
 
     @requisitions = @requisitions.order("updated_at DESC")
+
   end
 
 
@@ -42,12 +44,9 @@ class RequisitionsController < ApplicationController
   # POST /requisitions
   def create
     @requisition = Requisition.new(requisition_params)
-
     @requisition.user = User.find(params[:user_id])
-
     if @requisition.save
       redirect_to user_personal_data_path(current_user), alert: 'requisition was successfully created.'
-
     else
       render :new
     end
@@ -73,15 +72,16 @@ class RequisitionsController < ApplicationController
     # @requisition.destroy
     # redirect_to requisitions_url, notice: 'requisition was successfully deleted.'
   end
-  def home
-    # @supports = Support.all
-    # @user_is_supporter = @supports.select do |support|
-    #   support.supporter == current_user
-    # end
-    # @requisitions = requisition.all
-    # @user_created = @requisitions.select do |requisition|
-    #   requisition.user == current_user
-    # end
+
+  def change_status
+    binding.pry
+    @requisition = Requisition.find(params[:requisition_id])
+    if @requisition.user.datum_admin == false
+      redirect_to root_path, alert: 'Not authorized'
+    else
+      @requisition.status = #COMO FAZER?
+      render :edit
+    end
   end
 
   private
@@ -92,9 +92,7 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
-
       params.require(:requisition).permit(:status, :field_name, :new_value, :justification)
-
     end
 
 end
