@@ -6,9 +6,12 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions
   def index
-    @requisitions = Requisition.all
+    @requisitions = Requisition.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
 
-    @requisitions_pendente = Requisition.where(status: "pendente")
+    # @requisitions = Requisition.all
+
+    # @requisitions_pendente = Requisition.where(status: "pendente")
 
     @requisitions = @requisitions.order("updated_at DESC")
   end
