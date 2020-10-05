@@ -26,7 +26,8 @@
                         <br>
                           <%unless current_user.requisitions.select{|requisition| requisition.status == "aprovada"}.empty? %>
                           <div class="w-50 p-2">
-                            <%= f.input :new_value, label: 'Novo Valor a Ser Utilizado', collection: PersonalDatum.all.pluck(:datum_font).uniq %>
+                            <%= f.input :new_value, label: 'Novo Valor a Ser Utilizado' %>
+                            <%= f.input :excluded,label: 'Selecione se Deseja Excluir o dado' %>
                           </div>
                         <% end %>
                           <center><%= f.button :submit, 'Submeter', class: 'btn btn-primary' %></center>
