@@ -69,21 +69,10 @@ class RequisitionsController < ApplicationController
       redirect_to root_path, alert: 'Not authorized'
     else
       @requisition.update(status: params[:status])
-       # if params[:status] == "aprovada"
-        #personal data_new
-
-        #criação - só ocorre se aprovada
-        #edição @requisiton.new_value != nil
-        #deletar @requisiton.excluded == tru
-
     end
-      #render :edit
   end
-  # def load_csv
-  # requisition.user.cpf
-  # end
-  # def save_csv
-  # end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_requisition
