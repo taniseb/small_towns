@@ -18,7 +18,11 @@
         </div>
 
 
-        <%= render "index" %>
+
+
+        <%= render "index" if current_user.datum_admin %>
+
+
 
     </div>
 </div>

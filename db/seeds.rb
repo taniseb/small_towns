@@ -30,7 +30,6 @@ c.save!
 
     r = Requisition.new(status: ["pendente", "autorizada", "negado"].sample, field_name: ["IPTU", "ITBI", "ISS", "Dados Escolares", "Dados de Saúde"].sample, new_value: Faker::Lorem.sentence(word_count: 5), justification: Faker::Lorem.sentence(word_count: 5), excluded: [false, true].sample, user: u)
 
-
     r.save!
 
   end
