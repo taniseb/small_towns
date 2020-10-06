@@ -1,53 +1,38 @@
 class PersonalDataController < ApplicationController
 
-  before_action :set_personal_datum, only: [:index]
-
+  before_action :set_personal_datum, only: [:index, :show]
+  before_action :personal_datum_auth, only: [:index, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  def index; end
 
-
-  def index
-    @user = User.find(params[:user_id])
-
-  end
-
-  def show
-    @current_user = current_user
-  end
+  def show; end
 
   def destroy
-        #current_user.requisitions.where(status: "approved", new_value: nil, excluded: false))
-      if @requisition.status == "aprovada"
-        @personal_datum = PersonalDatum.find_by(user_id: @requisition.user_id, datum_font: @requisition.field_name)
-
-      #1. ver se está aprovada.
-        if requisition.excluded == true
-      #2. Se estiver aprovada & excluded: true:
-        end
-       #2.1destruir e mostrar no index de requisitions
-       #3. Se estiver aprovada & excluded: false & new value not nil:
-       #3.1 editar e mostrar no index de requisitions
-       #4.  Se estiver aprovada & excluded: false & new value  nil:
-        @personal_datum
-      #4.1  mostrar no index de requisitions
-       # if params[:status] == "aprovada"
-        #personal data_new
-      end
-        #criação - só ocorre se aprovada
-        #edição @requisiton.new_value != nil
-        #deletar @requisiton.excluded == tru
-
-      #render :edit
-  end
-  # def load_csv
-  # requisition.user.cpf
-  # end
-  # def save_csv
-  # end
+    @user = User.find(params[:user_id])
+    @requisition = Requisition.where(user_id: @user.id, status: "aprovada", excluded: true)
+    @personal_datum = []
+    @requisition.each do |r|
+      @personal_datum << PersonalDatum.find_by(datum_font: r.field_name)
+    end
+    @personal_datum.each {|p| p.destroy}
+    redirect_to user_root, notice: 'Dados foram deletados.'
   end
 
   def update
+    @user = User.find(params[:user_id])
+    @requisition = Requisition.where(user_id: @user.id, status: "aprovada").where.not(new_value: nil)
+    @requisition.each do |r|
+      @personal_datum = PersonalDatum.find_by(datum_font: r.field_name)
+    end
+    @personal_datum.datum_information = @requisition.new_value
+    if personal_datum.update(personal_datum_params)
+      redirect to user_root, notice: 'Dados atualizados'
+    else
+      redirect to user_root, notice: 'Não foi possível atualizar'
+    end
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_datum
@@ -57,7 +42,16 @@ class PersonalDataController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def personal_datum_params
-      params.require(:personal_datum).permit(:iptu, :scholar_attendancy, :health_information, :licence, :social_assistancy, :contract, :public_security, :traffic, :construction)
+      params.require(:personal_datum).permit(:datum_font, :datum_information,:datum_access,:user_id)
     end
 
+    def personal_datum_auth
+      @user = User.find(params[:user_id])
+      @requisition = Requisition.where(user_id: @user.id, status: "aprovada")
+      @personal_datum = []
+      @requisition.each do |r|
+        @personal_datum << PersonalDatum.find_by(datum_font: r.field_name)
+      end
+       @personal_datum.sort_by {|p|p.updated_at}.reverse
+    end
 end

@@ -7,9 +7,8 @@ class RequisitionsController < ApplicationController
   # GET /requisitions
   def index
     @requisitions = Requisition.all
-
+    @requisitions_pendente = Requisition.where(status: "pendente")
   end
-
 
   # GET /requisitions/1
   def show
@@ -21,17 +20,11 @@ class RequisitionsController < ApplicationController
   #   end
   end
 
-  # GET /requisitions/new
   def new
     @requisition = Requisition.new
     @user = User.find(params[:user_id])
   end
 
-  # GET /requisitions/1/edit
-  def edit
-  end
-
-  # POST /requisitions
   def create
     @requisition = Requisition.new(requisition_params)
     @requisition.user = User.find(params[:user_id])
@@ -42,33 +35,26 @@ class RequisitionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /requisitions/1
-  def update
-    # if @requisition.update(requisition_params)
-    #   redirect_to @requisition, notice: 'requisition was successfully updated.'
-    # else
-    #   render :edit
-    # end
-  end
-
-  # DELETE /requisitions/1
-  def destroy
-
-    # if @requisition.user != current_user
-    #   redirect_to root_path, alert: 'Not authorized'
-    #   return
-    # end
-
-    # @requisition.destroy
-    # redirect_to requisitions_url, notice: 'requisition was successfully deleted.'
-  end
-
   def change_status
     @requisition = Requisition.find(params[:requisition_id])
     if current_user.datum_admin == false
       redirect_to root_path, alert: 'Not authorized'
     else
       @requisition.update(status: params[:status])
+      redirect_to user_root_path
+     # if @requisition.new_value == nil && @requisition.excluded == false
+      #user_id = @requisition.user_id
+      #atum_font = @requisition.field_name
+      #personal_datum = PersonalDatum.find_by(user_id: user_id, datum_font: datum_font)
+
+      #end
+      #se a requisição for do tipo "show", mostrar os dados  de Personal Data para o usuário;
+      #show: new_value is nil e excluded=false
+      #se a requisição for do tipo "edit", editar os dados de Personal Data para o usuário;
+      #edit"new_value not nil e excluded = false
+      #se a requisição for do tipo "delete", deletar os dados do usuário
+      #excluded=true
+
     end
   end
 
