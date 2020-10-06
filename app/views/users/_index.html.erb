@@ -3,8 +3,8 @@
           <% if current_user.datum_admin==true  %>
             <% @requisitions_pendente.each do |r| %>
               <%= r.id %>
-              <%=link_to 'aprovar', user_requisition_change_status_path(user_id: r.user_id,requisition_id: r.id, status: "aprovada"),method: 'patch' %>
-              <%=link_to 'reprovar', user_requisition_change_status_path(user_id: r.user_id,requisition_id: r.id, status: "reprovada"),method: 'patch' %>
+              <%=link_to 'aprovar', requisition_change_status_path(requisition_id: r.id, status: "aprovada"),method: 'patch' %>
+              <%=link_to 'reprovar', requisition_change_status_path(requisition_id: r.id, status: "reprovada"),method: 'patch' %>
             <% end %>
           <% end %>
         <center><h5>Você ainda não pediu permissão</h5></center>

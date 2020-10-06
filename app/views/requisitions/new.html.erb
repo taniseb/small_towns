@@ -1,6 +1,6 @@
 <div class="container w-50 mt-4 p-5 text">
 
-              <%= simple_form_for([@user, @requisition]) do |f| %>
+              <%= simple_form_for(@requisition) do |f| %>
 
                     <div class="text-center text">
                     <h1>Faça sua solicitação no formulário</h1>
@@ -26,6 +26,7 @@
                           </div>
                         <% end %>
                           <center><%= f.button :submit, 'Submeter', class: 'btn btn-primary' %></center>
+
                         </div>
 
                       </div>
