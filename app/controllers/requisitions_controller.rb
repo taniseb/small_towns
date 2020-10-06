@@ -14,7 +14,7 @@ class RequisitionsController < ApplicationController
 
     # @requisitions_pendente = Requisition.where(status: "pendente")
 
-    @requisitions = @requisitions.order("updated_at DESC")
+    @requisitions = @requisitions.order("updated_at ASC")
 
   end
 
