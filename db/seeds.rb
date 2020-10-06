@@ -6,6 +6,13 @@ CityHall.delete_all
 User.delete_all
 Requisition.delete_all
 PersonalDatum.delete_all
+Requisition.delete_all
+
+puts "--------------------------------------------"
+
+puts "First"
+
+puts "--------------------------------------------"
 
 puts "Creating the first CityHall"
 
@@ -87,19 +94,17 @@ pd58.user = u12
 pd58.save!
 
 
-
-
-puts "Creating the first Requisition"
+puts "Creating the first Requisitions"
 
 rq12 = Requisition.new
 
-rq12.status = "pendente"
+rq12.field_name = "IPTU"
 
-rq12.field_name = "Regularização imobiliária pendente para os meus imóveis"
+rq12.new_value = "Solicito atualizar a quantidade de imóveis em que sou proprietário. Sou proprietário de 14 imóveis urbanos neste município, e não 25 ; referência outubro de 2020."
 
-rq12.new_value = "Os imóveis em que sou proprietário estão com a Regularização Imobiliária em dia: impostos pagos e de acordo com a legislação do município"
+rq12.justification = "A quantidade errada de imóveis pode implicar cálculo incorreto para o valor do IPTU."
 
-rq12.justification = "Todos meus imóveis estão com os impostos quitados e com a documentação em conformidade com a lei municipal"
+rq12.status = "Pendente"
 
 rq12.excluded = false
 
@@ -107,6 +112,49 @@ rq12.user = u12
 
 rq12.save!
 
+
+
+rq13 = Requisition.new
+
+rq13.status = "Pendente"
+
+rq13.field_name = "ITBI"
+
+rq13.new_value = "Realizou transferência de propriedade de 4 casas e 6 prédios, e não 5 casas e 11 prédios; em setembro de 2020."
+
+rq13.justification = "A quantidade errada de transferências pode implicar cálculo incorreto para o valor do ITBI."
+
+rq13.excluded = false
+
+rq13.user = u12
+
+rq13.save!
+
+
+rq14 = Requisition.new
+
+rq14.status = "Pendente"
+
+rq14.field_name = "ISS"
+
+rq14.new_value = "Contribui com o pagamento de ISS no valor de quatro milhöes de reais, e não três milhôes."
+
+rq14.justification = "O registro incorreto do valor de ISS contribuído pode implicar em irregularidades na minha declaração de imposto de renda."
+
+rq14.excluded = false
+
+rq14.user = u12
+
+rq14.save!
+
+
+
+puts "-------------------------------------------------------------------"
+
+puts "Second"
+
+puts "-------------------------------------------------------------------"
+=======
 
 puts "Creating the second CityHall"
 
@@ -142,7 +190,7 @@ puts "Creating the second PersonalDatum"
 
 pd13 = PersonalDatum.new
 
-pd13.datum_font = "Secretaria de Educação"
+pd13.datum_font = "Dados Escolares"
 
 pd13.datum_information = "Novo curso de Doutorado"
 
@@ -170,6 +218,13 @@ rq13.justification = "Todos meus imóveis estão com os impostos quitados e com 
 rq13.excluded = false
 
 rq13.user = u13
+
+
+puts "-------------------------------------------------------------------"
+
+puts "Third"
+
+puts "-------------------------------------------------------------------"
 
 rq13.save!
 
@@ -209,11 +264,11 @@ puts "Creating the third PersonalDatum"
 
 pd14 = PersonalDatum.new
 
-pd14.datum_font = "Secretaria de Cultura e Esportes"
+pd14.datum_font = "Dados de Saúde"
 
-pd14.datum_information = "Bolsa de esportes para prática de natação"
+pd14.datum_information = "Solicitação de remédios de alto valor para doença específica e rara."
 
-pd14.datum_access = "Acesso livre a todos os cidadãos"
+pd14.datum_access = "Gestora da Secretaria de Saúde."
 
 pd14.city_hall = c14
 
@@ -238,7 +293,10 @@ rq14.excluded = false
 
 rq14.user = u14
 
+
+
 rq14.save
+
 
 
 puts "Finish the seed"
