@@ -4,6 +4,6 @@ class Requisition < ApplicationRecord
 
   def default_value
     self.status = "pendente"
-    self.excluded = false
+    self.excluded ||= false
   end
 end

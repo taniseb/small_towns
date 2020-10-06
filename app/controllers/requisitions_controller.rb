@@ -24,9 +24,7 @@ class RequisitionsController < ApplicationController
   # GET /requisitions/new
   def new
     @requisition = Requisition.new
-
     @user = User.find(params[:user_id])
-
   end
 
   # GET /requisitions/1/edit
@@ -66,15 +64,14 @@ class RequisitionsController < ApplicationController
   end
 
   def change_status
-    binding.pry
     @requisition = Requisition.find(params[:requisition_id])
-    if @requisition.user.datum_admin == false
+    if current_user.datum_admin == false
       redirect_to root_path, alert: 'Not authorized'
     else
-      @requisition.status = #COMO FAZER?
-      render :edit
+      @requisition.update(status: params[:status])
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -84,7 +81,7 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
-      params.require(:requisition).permit(:status, :field_name, :new_value, :justification)
+      params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded)
     end
 
 end
