@@ -6,4 +6,5 @@ class UsersController < ApplicationController
     def home
       @requisitions_pendente = Requisition.where(status:"pendente")
     end
+
 end
