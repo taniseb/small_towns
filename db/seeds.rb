@@ -4,6 +4,7 @@ puts "Deleting data"
 
 CityHall.delete_all
 User.delete_all
+Requisition.delete_all
 PersonalDatum.delete_all
 Requisition.delete_all
 
@@ -112,6 +113,7 @@ rq12.user = u12
 rq12.save!
 
 
+
 rq13 = Requisition.new
 
 rq13.status = "Pendente"
@@ -152,6 +154,7 @@ puts "-------------------------------------------------------------------"
 puts "Second"
 
 puts "-------------------------------------------------------------------"
+=======
 
 puts "Creating the second CityHall"
 
@@ -216,11 +219,14 @@ rq13.excluded = false
 
 rq13.user = u13
 
+
 puts "-------------------------------------------------------------------"
 
 puts "Third"
 
 puts "-------------------------------------------------------------------"
+
+rq13.save!
 
 
 puts "Creating the third CityHall"
@@ -250,6 +256,7 @@ u14.password = "123456"
 u14.password_confirmation = "123456"
 
 u14.city_hall = c14
+u14.datum_admin = true
 
 u14.save!
 
@@ -286,7 +293,11 @@ rq14.excluded = false
 
 rq14.user = u14
 
-puts "________________________________________________________________________"
+
+
+rq14.save
+
+
 
 puts "Finish the seed"
 

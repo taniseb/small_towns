@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :requisitions
+  has_many :requisitions, dependent: :destroy
   has_many :personal_data
   belongs_to :city_hall, optional:true
 
