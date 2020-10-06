@@ -97,13 +97,13 @@ puts "Creating the first Requisitions"
 
 rq12 = Requisition.new
 
-rq12.status = "Pendente"
-
 rq12.field_name = "IPTU"
 
-rq12.new_value = "Proprietário de 14 imóveis urbanos neste município, e não 25 ; referência outubro de 2020."
+rq12.new_value = "Solicito atualizar a quantidade de imóveis em que sou proprietário. Sou proprietário de 14 imóveis urbanos neste município, e não 25 ; referência outubro de 2020."
 
 rq12.justification = "A quantidade errada de imóveis pode implicar cálculo incorreto para o valor do IPTU."
+
+rq12.status = "Pendente"
 
 rq12.excluded = false
 
