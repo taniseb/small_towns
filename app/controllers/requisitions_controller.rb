@@ -21,12 +21,8 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions/1
   def show
-  #   @support = Support.new
-  #   @requisition = Requisition.find(params[:id])
-  #   @current_user = current_user
-  #   @user_is_supporter = @requisition.supports.any? do |support|
-  #     support.supporter == current_user
-  #   end
+    @requisition = Requisition.find(params[:id])
+    @user = Requisition.find(params[:user_id])
   end
 
   # GET /requisitions/new
@@ -89,7 +85,7 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
-      params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded)
+      params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded, :user_id)
     end
 
 end
