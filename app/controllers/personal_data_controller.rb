@@ -1,5 +1,4 @@
 class PersonalDataController < ApplicationController
-
   before_action :set_personal_datum, only: [:index, :show]
   before_action :personal_datum_auth, only: [:index, :show]
   skip_before_action :authenticate_user!, only: [:index, :show]

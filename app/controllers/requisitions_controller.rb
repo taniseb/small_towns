@@ -6,18 +6,27 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions
   def index
+<<<<<<< HEAD
     @requisitions = Requisition.all
     @requisitions_pendente = Requisition.where(status: "pendente")
+=======
+
+    @requisitions = Requisition.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+
+    # @requisitions = Requisition.all
+
+    # @requisitions_pendente = Requisition.where(status: "pendente")
+
+    @requisitions = @requisitions.order("updated_at ASC")
+
+>>>>>>> f68ca648274a60a1b8ee0cb27addf32c57ae2145
   end
 
   # GET /requisitions/1
   def show
-  #   @support = Support.new
-  #   @requisition = Requisition.find(params[:id])
-  #   @current_user = current_user
-  #   @user_is_supporter = @requisition.supports.any? do |support|
-  #     support.supporter == current_user
-  #   end
+    @requisition = Requisition.find(params[:id])
+    @user = Requisition.find(params[:user_id])
   end
 
   def new
@@ -67,7 +76,7 @@ class RequisitionsController < ApplicationController
 
     # Only allow a trusted parameter "white-list" through.
     def requisition_params
-      params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded)
+      params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded, :user_id)
     end
 
 end
