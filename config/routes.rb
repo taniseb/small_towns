@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] do
-    resources :requisitions, only: [:index,:new,:create] do
+    resources :requisitions, only: [:index,:new,:create,:show] do
       patch '/change_status', to: "requisitions#change_status", as: :change_status
     end
     resources :personal_data, only: [:index, :show]
