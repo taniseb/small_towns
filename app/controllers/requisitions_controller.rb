@@ -46,24 +46,22 @@ class RequisitionsController < ApplicationController
       redirect_to root_path, alert: 'Not authorized'
     else
       @requisition.update(status: params[:status])
-        @user_requisitions = current_user.requisitions.where(status: "approved", new_value: nil, excluded: false)
-        redirect_to user_root_path
-
-        #como linkar com o personal data?
-        #personal data_new
-
-        #criação - só ocorre se aprovada
-        #edição @requisiton.new_value != nil
-        #deletar @requisiton.excluded == tru
-
+      if @requisition.excluded == true && @requisition.status="aprovada"
+        if @requisition.personal_datum.nil?
+          #criar a justificativa e expor que Não deu pra excluir
+        else
+          @requisition.personal_datum.datum_information = nil
+          @requisition.personal_datum.datum_access = nil
+          @requisition.personal_datum.datum_font = nil
+        end
+      elsif !@requisition.new_value.nil? && @requisition.status="aprovada"
+        @requisition.personal_datum.datum_information = @requisition.new_value
+        @requisition.personal_datum.save
+      end
     end
-      #render :edit
+    redirect_to user_root_path
   end
-  # def load_csv
-  # requisition.user.cpf
-  # end
-  # def save_csv
-  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_requisition
