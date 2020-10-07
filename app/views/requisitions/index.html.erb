@@ -78,6 +78,8 @@
               <div class="card-header" >
               <center><h6>Status</h6></center>
               </div>
+
+
                   <button type="button" class="btn btn-<%=requisition.button_color%> m-2">
                   <%= "#{requisition.status}" %>
                   <% if requisition.status == "aprovada" %>
@@ -87,13 +89,12 @@
                     </svg>
                   </button>
 
-                <div class="d-flex">
-                  <% if current_user.datum_admin  %>
-                    <%=link_to 'aprovar', requisition_change_status_path(requisition_id: requisition.id, status: "aprovada"),method: 'patch', class: "btn btn-light m-2 bg-success" %>
-                    <%=link_to 'reprovar', requisition_change_status_path(requisition_id: requisition.id, status: "reprovada"),method: 'patch', class: "btn btn-light m-2 bg-danger" %>
-                  <% end %>
-                </div>
-                  <% if requisition.status == "aprovada" %>
+                    <% if current_user.datum_admin  %>
+                      <%=link_to 'aprovar', requisition_change_status_path(requisition_id: requisition.id, status: "aprovada"),method: 'patch', class: "btn btn-light m-2 bg-success" %>
+                      <%=link_to 'reprovar', requisition_change_status_path(requisition_id: requisition.id, status: "reprovada"),method: 'patch', class: "btn btn-light m-2 bg-danger" %>
+                    <% end %>
+
+                  <% if requisition.status == "aprovada" || current_user.datum_admin %>
                     <%= link_to user_requisition_path(current_user, requisition), class:"btn btn-light m-2" do %>
                     Mostrar
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -102,6 +103,8 @@
                     </svg>
                     <% end %>
                   <% end %>
+
+
 
 
               </div>
