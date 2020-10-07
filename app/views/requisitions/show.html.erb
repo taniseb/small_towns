@@ -36,14 +36,31 @@
                 <%= @requisition.justification %>
             </p>
             </div>
+            <%if @requisition.personal_datum.nil?  %>
 
-            <div class="media text-muted pt-3 ml-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark">Dados pessoais solicitados:</strong>
-              <%= "De acordo com a solicitação #{@requisition.id}, as informações referentes ao #{@requisition.field_name} dizem respeito a #{@requisition.personal_datum.datum_information}, sendo que o acesso a tais informações é de #{@requisition.personal_datum.datum_access}" %>
+              <div class="media text-muted pt-3 ml-3">
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">Dados pessoais solicitados:</strong>
+                Não foi possível encontrar informações sobre sua solicitação.
             </p>
             </div>
 
+            <%elsif @requisition.personal_datum.datum_font.nil?  %>
+
+              <div class="media text-muted pt-3 ml-3">
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">Dados pessoais solicitados:</strong>
+                Seus dados foram deletados com sucesso.
+            </p>
+            </div>
+            <% else %>
+              <div class="media text-muted pt-3 ml-3">
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">Dados pessoais solicitados:</strong>
+                <%= "De acordo com a solicitação #{@requisition.id}, as informações referentes ao #{@requisition.field_name} dizem respeito a #{@requisition.personal_datum.datum_information}, sendo que o acesso a tais informações é de #{@requisition.personal_datum.datum_access}" %>
+              </p>
+              </div>
+          <% end %>
 
             <small class="d-block text-right mt-3">
 
