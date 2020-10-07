@@ -6,10 +6,9 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions
   def index
-    @requisitions = Requisition.where(user: current_user)
+    @requisitions = current_user.datum_admin ? Requisition.where(status: "pendente") : Requisition.where(user: current_user)
+    @requisitions = @requisitions.order(created_at: :desc)
     @user = current_user
-    @requisitions_pendente = Requisition.where(status: "pendente")
-
   end
 
 
@@ -38,31 +37,10 @@ class RequisitionsController < ApplicationController
     @requisition = Requisition.new(requisition_params)
     @requisition.user = User.find(current_user.id)
     if @requisition.save
-      redirect_to user_personal_data_path(current_user), alert: 'requisition was successfully created.'
+      redirect_to user_root_path, alert: 'requisition was successfully created.'
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /requisitions/1
-  def update
-    # if @requisition.update(requisition_params)
-    #   redirect_to @requisition, notice: 'requisition was successfully updated.'
-    # else
-    #   render :edit
-    # end
-  end
-
-  # DELETE /requisitions/1
-  def destroy
-
-    # if @requisition.user != current_user
-    #   redirect_to root_path, alert: 'Not authorized'
-    #   return
-    # end
-
-    # @requisition.destroy
-    # redirect_to requisitions_url, notice: 'requisition was successfully deleted.'
   end
 
   def change_status
@@ -73,8 +51,8 @@ class RequisitionsController < ApplicationController
       @requisition.update(status: params[:status])
         @user_requisitions = current_user.requisitions.where(status: "approved", new_value: nil, excluded: false)
         redirect_to user_root_path
-        #como linkar com o personal data?
 
+        #como linkar com o personal data?
         #personal data_new
 
         #criação - só ocorre se aprovada
@@ -99,5 +77,11 @@ class RequisitionsController < ApplicationController
     def requisition_params
       params.require(:requisition).permit(:status, :field_name, :new_value, :justification,:excluded)
     end
+
+    # def set_personal_data
+    #   if @requisition.field_name == @personal_data.datum_font && @requisition.user ==  @personal_data.user
+    #     @requisitions.personal_data_id = @personal_data_id
+    #   end
+    # end
 
 end
