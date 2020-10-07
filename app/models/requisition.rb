@@ -7,4 +7,17 @@ class Requisition < ApplicationRecord
     self.status = "pendente"
     self.excluded ||= false
   end
+
+  def find_personal_datum
+    PersonalDatum.find_by( user_id: self.user_id, datum_font: self.field_name)
+  end
+
+  def button_color
+    case self.status
+    when "aprovada" then "success"
+    when "reprovada" then "danger"
+    else
+      "primary"
+    end
+  end
 end
