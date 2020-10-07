@@ -14,12 +14,8 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions/1
   def show
-  #   @support = Support.new
-  #   @requisition = Requisition.find(params[:id])
-  #   @current_user = current_user
-  #   @user_is_supporter = @requisition.supports.any? do |support|
-  #     support.supporter == current_user
-  #   end
+    @user = User.find(current_user.id)
+    @requisition = Requisition.find(params[:id])
   end
 
   # GET /requisitions/new
@@ -36,6 +32,7 @@ class RequisitionsController < ApplicationController
   def create
     @requisition = Requisition.new(requisition_params)
     @requisition.user = User.find(current_user.id)
+    @requisition.personal_datum = @requisition.find_personal_datum
     if @requisition.save
       redirect_to user_root_path, alert: 'requisition was successfully created.'
     else
