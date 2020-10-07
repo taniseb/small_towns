@@ -46,15 +46,12 @@ class RequisitionsController < ApplicationController
       redirect_to root_path, alert: 'Not authorized'
     else
       @requisition.update(status: params[:status])
-      if @requisition.excluded == true && @requisition.status="aprovada"
-        if @requisition.personal_datum.nil?
-          #criar a justificativa e expor que Não deu pra excluir
-        else
-          @requisition.personal_datum.datum_information = nil
-          @requisition.personal_datum.datum_access = nil
-          @requisition.personal_datum.datum_font = nil
-        end
-      elsif !@requisition.new_value.nil? && @requisition.status="aprovada"
+      if @requisition.excluded == true && @requisition.status == "aprovada" && !@requisition.personal_datum.nil?
+        @requisition.personal_datum.datum_information = ""
+        @requisition.personal_datum.datum_access =  ""
+        @requisition.personal_datum.datum_font =  ""
+        @requisition.personal_datum.save
+      elsif !@requisition.new_value == "" && @requisition.status == "aprovada"  && !@requisition.personal_datum.nil?
         @requisition.personal_datum.datum_information = @requisition.new_value
         @requisition.personal_datum.save
       end
