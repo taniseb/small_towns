@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :requisitions, dependent: :destroy
   has_many :personal_data
   belongs_to :city_hall, optional:true
-  validates :first_name, format: { with: /\A[a-zA-Zá-úÁ-ÚüÜ]+\z/ }
-  validates :last_name, format: { with: /\A[a-zA-Zá-úÁ-ÚüÜ]+\z/  }
+  validates :first_name, format: { with: /\A[a-zA-Zá-úÁ-ÚüÜ ]+\z/ }
+  validates :last_name, format: { with: /\A[a-zA-Zá-úÁ-ÚüÜ ]+\z/  }
   validates :cpf, length: { is: 11 }, format: { with: /[0-9]/}
 
   def avaliable_data

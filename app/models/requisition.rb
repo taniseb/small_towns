@@ -2,7 +2,7 @@ class Requisition < ApplicationRecord
   before_create :default_value
   belongs_to :user
   belongs_to :personal_datum, optional: true
-  validates :datum_font, presence: true
+  validates :field_name, presence: true
   validates :justification, presence: true, length: { minimum: 15 }
   def default_value
     self.status = "pendente"
