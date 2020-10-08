@@ -5,12 +5,15 @@ class RequisitionsController < ApplicationController
   # before_action :set_requisition, only: [:show, :edit, :update, :destroy]
 
   # GET /requisitions
+  def all
+    @requisitions= Requisition.all
+  end
+
   def index
     @requisitions = current_user.datum_admin ? Requisition.where(status: "pendente") : Requisition.where(user: current_user)
     @requisitions = @requisitions.order(created_at: :desc)
     @user = current_user
   end
-
 
   # GET /requisitions/1
   def show
@@ -33,6 +36,8 @@ class RequisitionsController < ApplicationController
     @requisition = Requisition.new(requisition_params)
     @requisition.user = User.find(current_user.id)
     @requisition.personal_datum = @requisition.find_personal_datum
+
+    #@requisition.errors.add(:new_value, "não pode ser mudado por x, y e z")
     if @requisition.save
       redirect_to user_root_path, alert: 'requisition was successfully created.'
     else
@@ -46,15 +51,13 @@ class RequisitionsController < ApplicationController
       redirect_to root_path, alert: 'Not authorized'
     else
       @requisition.update(status: params[:status])
-      if @requisition.excluded == true && @requisition.status="aprovada"
-        if @requisition.personal_datum.nil?
-          #criar a justificativa e expor que Não deu pra excluir
-        else
-          @requisition.personal_datum.datum_information = nil
-          @requisition.personal_datum.datum_access = nil
-          @requisition.personal_datum.datum_font = nil
-        end
-      elsif !@requisition.new_value.nil? && @requisition.status="aprovada"
+
+      if (@requisition.excluded == true && @requisition.status == "aprovada" && @requisition.personal_datum.present?)
+        @requisition.personal_datum.datum_information = ""
+        @requisition.personal_datum.datum_access = ""
+        @requisition.personal_datum.datum_font = ""
+        @requisition.personal_datum.save
+      elsif @requisition.new_value != "" && @requisition.status == "aprovada" && !@requisition.personal_datum.nil?
         @requisition.personal_datum.datum_information = @requisition.new_value
         @requisition.personal_datum.save
       end

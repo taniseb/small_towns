@@ -36,8 +36,7 @@
                 <%= @requisition.justification %>
             </p>
             </div>
-            <%if @requisition.personal_datum.nil?  %>
-
+            <%if @requisition.personal_datum.nil? %>
               <div class="media text-muted pt-3 ml-3">
               <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               <strong class="d-block text-gray-dark">Dados pessoais solicitados:</strong>
@@ -45,7 +44,7 @@
             </p>
             </div>
 
-            <%elsif @requisition.personal_datum.datum_font.nil?  %>
+            <%elsif @requisition.personal_datum.datum_font == "" %>
 
               <div class="media text-muted pt-3 ml-3">
               <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
@@ -65,6 +64,7 @@
             <small class="d-block text-right mt-3">
 
             </small>
+            <%= link_to 'voltar', user_root_path %>
 
     </div>
 
