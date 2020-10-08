@@ -56,10 +56,18 @@
 
                     <div class="ml-3 mt-3 mr-2" >
                       <h5>Solicitação:</h5>
-                      <p><%= "#{requisition.justification}" %><p>
+                      <p><%= requisition.justification %></p>
                     </div>
-
-
+                    <% if current_user.datum_admin %>
+                     <div class="ml-3 mt-3 mr-2" >
+                      <hr>
+                        <h5>Nova informação</h5>
+                        <p><%= requisition.new_value%></p>
+                        <% if requisition.excluded? %>
+                          O usuário deseja deletar os dados desta requisição.
+                        <% end %>
+                    </div>
+                    <% end %>
                     <div class="ml-3 mt-3 mr-2" >
 
                   </div>
