@@ -17,22 +17,19 @@ s = User.new(email:"admin@admin.com" , first_name: "Admin", last_name:"Admin",
     city_hall: c, datum_admin:true)
 s.save!
 
-admin = User.new(email: Faker::Internet.email , first_name: Faker::Name.first_name, last_name:Faker::Name.last_name,
-    cpf: Faker::Number.leading_zero_number(digits: 11), password: "123456", password_confirmation: "123456",
-    city_hall: c, datum_admin: true)
 
-admin.save!
+
 
 10.times do
-  u = User.new(email: Faker::Internet.email , first_name: Faker::Name.first_name, last_name:Faker::Name.last_name,
+  u = User.new(email: Faker::Internet.email , first_name: ["João Victor", "Bruno", "Pedro", "Tabatha", "Milene", "Vinícius", "Vitor", "Isabela"].sample, last_name:["Miranda", "Cardoso", "Wiggers", "Tostes", "Mayer", "Ramires", "Antunes"].sample,
     cpf: Faker::Number.leading_zero_number(digits: 11), password: "123456", password_confirmation: "123456",
     city_hall: c)
   u.save!
 
   5.times do
-    p = PersonalDatum.new(datum_font: ["IPTU", "ITBI", "ISS", "Dados Escolares", "Dados de Saúde"].sample, datum_information: Faker::Lorem.sentence(word_count: 5), datum_access: ["Gestor", "Servidor", "Fornecedor"].sample, city_hall: c, user: u)
+    p = PersonalDatum.new(datum_font: ["IPTU", "ITBI", "ISS", "Dados Escolares", "Dados de Saúde"].sample, datum_information: ["somente informações financeiras", "seu nome completo", "RG e CPF", "Informações relativas ao desempenho"].sample, datum_access: ["Gestor", "Servidor", "Fornecedor", "Públicas no Sítio da Prefeitura", "Disponibilizadas a todos sob demanda"].sample, city_hall: c, user: u)
     p.save!
-    r = Requisition.new(status: "pendente", field_name: ["IPTU", "ITBI", "ISS", "Dados Escolares", "Dados de Saúde"].sample, new_value: Faker::Lorem.sentence(word_count: 5), justification: Faker::Lorem.sentence(word_count: 5), excluded: false, user: u, personal_datum: p)
+    r = Requisition.new(status: "pendente", field_name: ["IPTU", "ITBI", "ISS", "Dados Escolares", "Dados de Saúde"].sample, new_value: ["favor não disponibilizar a ninguém exceto ao gestor", "peço a mudança em meu nome, com a adição do sobrenome Silva por conta do meu casamento", "Peço a modificação do meu nome, com a exclusão do sobrenome Souza por conta do meu divórcio", "Meu nome está escrito errado. Favor excluir a última letra"].sample, justification: ["É meu direito ter acesso a tais informações", "O acesso está garantido pela LGPD", "A informação é minha e está apenas sobre a guarda da prefeitura", "Não gostaria de ter disseminadas minhas informações pessoais sem o meu conhecimento"].sample, excluded: false, user: u, personal_datum: p)
     r.save!
   end
 
