@@ -17,8 +17,9 @@ class RequisitionsController < ApplicationController
 
   # GET /requisitions/1
   def show
-    @user = User.find(current_user.id)
     @requisition = Requisition.find(params[:id])
+    @user = current_user.datum_admin? ? User.find(@requisition.user.id) : User.find(current_user.id)
+
   end
 
   # GET /requisitions/new
