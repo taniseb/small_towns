@@ -61,7 +61,7 @@
                      <div class="ml-3 mt-3 mr-2" >
                       <hr>
                       <h5>Nome do usuário:</h5>
-                      <p><%= "#{@user.first_name} #{@user.last_name}"  %></p>
+                      <p><%= "#{requisition.user.first_name} #{requisition.user.last_name}"  %></p>
                         <h5>Nova informação</h5>
                         <p><%= requisition.new_value%></p>
                         <% if requisition.excluded? %>

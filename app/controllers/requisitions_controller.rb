@@ -54,10 +54,11 @@ class RequisitionsController < ApplicationController
       @requisition.update(status: params[:status])
 
       if (@requisition.excluded == true && @requisition.status == "aprovada" && @requisition.personal_datum.present?)
-        @requisition.personal_datum.datum_information = ""
-        @requisition.personal_datum.datum_access = ""
-        @requisition.personal_datum.datum_font = ""
-        @requisition.personal_datum.save
+        personal_datum = @requisition.personal_datum
+        personal_datum.datum_information = ""
+        personal_datum.datum_access = ""
+        personal_datum.datum_font = ""
+        personal_datum.save
       elsif @requisition.new_value != "" && @requisition.status == "aprovada" && !@requisition.personal_datum.nil?
         @requisition.personal_datum.datum_information = @requisition.new_value
         @requisition.personal_datum.save

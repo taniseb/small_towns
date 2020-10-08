@@ -18,6 +18,8 @@ s = User.new(email:"admin@admin.com" , first_name: "Admin", last_name:"Admin",
 s.save!
 
 
+
+
 10.times do
   u = User.new(email: Faker::Internet.email , first_name: ["João Victor", "Bruno", "Pedro", "Tabatha", "Milene", "Vinícius", "Vitor", "Isabela"].sample, last_name:["Miranda", "Cardoso", "Wiggers", "Tostes", "Mayer", "Ramires", "Antunes"].sample,
     cpf: Faker::Number.leading_zero_number(digits: 11), password: "123456", password_confirmation: "123456",
