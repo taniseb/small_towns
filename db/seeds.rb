@@ -13,6 +13,12 @@ c = CityHall.new(name: "Goiania", ibge_code: "159753")
 
 c.save!
 
+admin = User.new(email: Faker::Internet.email , first_name: Faker::Name.first_name, last_name:Faker::Name.last_name,
+    cpf: Faker::Number.leading_zero_number(digits: 11), password: "123456", password_confirmation: "123456",
+    city_hall: c, datum_admin: true)
+
+admin.save!
+
 10.times do
   u = User.new(email: Faker::Internet.email , first_name: Faker::Name.first_name, last_name:Faker::Name.last_name,
     cpf: Faker::Number.leading_zero_number(digits: 11), password: "123456", password_confirmation: "123456",
